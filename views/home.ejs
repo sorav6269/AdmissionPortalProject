@@ -1,0 +1,305 @@
+<%-include('./layouts/header.ejs')%>
+    <!-- carousel -->
+
+    <section id="carousel">
+        <div id="myCarousel" class="carousel slide mb-6" data-bs-ride="carousel">
+            <!-- <div class="carousel-indicators">
+                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active"
+                    aria-label="Slide 1" aria-current="true"></button>
+                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"
+                    class=""></button>
+                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"
+                    class=""></button>
+            </div> -->
+            
+            <div class="carousel-inner">
+                <!-- item-1 -->
+                <div class="carousel-item active" data-bs-interval="4000">
+                    <img class="carouselHeight" src="./Images/CampusImage-1.avif" alt="Campus Image-1" width="100%">
+                </div>
+
+                <!-- item-2 -->
+                <div class="carousel-item" data-bs-interval="2000">
+                    <img class="carouselHeight" src="./Images/CampusImage-2.avif" alt="Campus Image-2" width="100%">
+                </div>
+
+                <!-- item-3 -->
+                <div class="carousel-item" data-bs-interval="2000">
+                    <img class="carouselHeight" src="./Images/CampusImage-3.jpeg" alt="Campus Image-3" width="100%">
+                </div>
+            </div>
+            <!-- <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+                <span class="" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span> -->
+            </button>
+        </div>
+    </section>
+    <!-- End Carousel -->
+    
+    <!-- Courses -->
+    <section id="courses">
+        <marquee behavior="alternate" direction="Left">
+            
+            <section class="pt-5 text-center container">
+                <div class="row py-lg-5">
+                    <div class="col-lg-6 col-md-8 mx-auto" style="color: rgb(163, 15, 15);">
+                        <h1 class="fw-light">Welcome User</h1>
+                        <p class="lead text-body-secondary" style="color: rgb(37, 31, 31);">MAHARANA PRATAP COLLEGE OF TECHNOLOGY, GWALIOR</p>
+                    </div>
+                </div>
+            </section>
+        </marquee>
+
+        <!-- Detail -->
+        <div class="container" id="detail" >
+            <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5 ">
+                <div class="col">
+                    <div class="card card-cover h-100 p-5 overflow-hidden text-bg-white rounded-4 shadow-lg">
+                        <p class="fw-light  tmy-auto">Bachelor of Technology is one of the sought-after career choices for students. It is also known as B. Tech, where students learn the concept of software development, business software, information security, maintaining database, and more during 4 years of education.</p>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card card-cover h-100 p-5 overflow-hidden text-bg-white rounded-4 shadow-lg">
+                        <p class="fw-light text-dark my-auto">The BCA Full form is Bachelor of Computer Applications. BCA course details can help you to find solutions to complex problems in a world full of complex and fast-moving technology. A Bachelor of Computer Application degree is the core of Computer Science in today’s world. bca admission is a three-year degree program.</p>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card card-cover h-100 p-5 overflow-hidden text-bg-white rounded-4 shadow-lg">
+                        <p class="fw-light text-dark my-auto">A Master of Computer Applications (MCA) is a postgraduate program that focuses on computer applications, software development, and IT. The course is designed to teach students programming and software skills to help them succeed in the IT sector.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Detail -->
+
+        <div class="album py-5">
+            <div class="container">
+
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                    <!-- card-1 -->
+                    <div class="col">
+                        <div class="card shadow-sm">
+                            <img class="rounded w-100" src="./Images/Course-1.jpeg" alt="Course-1" height="200rem">
+                            <div class="card-body text-center">
+                                <h2>B.Tech</h2>
+                                <p class="card-text">B.Tech is a professional undergraduate engineering degree</p>
+                                <% if(btech){%>
+                                    <a href="/course/Display" class="btn btn-info">Course Display</a>
+                                <%}else{%>
+
+                                    <button type="button" class="btn btn-info" data-bs-target="#aa" data-bs-toggle="modal">Register</button>
+                                <%}%> 
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- card-2 -->
+                    <div class="col">
+                        <div class="card shadow-sm">
+                            <img class="rounded w-100" src="./Images/Course-2.jpeg" alt="Course-2" height="200rem">
+                            <div class="card-body text-center">
+                                <h2>BCA</h2>
+                                <p class="card-text">BCA is a three-year Bachelor's Degree in Computer Application</p>
+                                 <% if(bca){%>
+                                    <a href="/course/Display" class="btn btn-info">Course Display</a>
+                                <%}else{%>
+
+                                    <button type="button" class="btn btn-info" data-bs-target="#bca" data-bs-toggle="modal">Register</button>
+                                <%}%> 
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- card-3 -->
+                    <div class="col">
+                        <div class="card shadow-sm">
+                            <img class="rounded w-100" src="./Images/Course-3.jpeg" alt="Course-3" height="200rem">
+                            <div class="card-body text-center">
+                                <h2>MCA</h2>
+                                <p class="card-text">MCA is a professional post-graduation degree in Computer
+                                    Application</p>
+                                <% if(mca){%>
+                                    <a href="/course/Display" class="btn btn-info">Course Display</a>
+                                <%}else{%>
+
+                                    <button type="button" class="btn btn-info" data-bs-target="#mca" data-bs-toggle="modal">Register</button>
+                                <%}%> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+     <!-- btech modal -->
+    <div class="modal fade" id="aa">
+        <div class="modal-dialog"> <!--model xl,sm,lg-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-tittle"> Registration Form</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div><!--modal-header end-->
+                <div class="modal-body">
+                    <form action="/courseInsert" method="post" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            Name
+                            <input type="text" name="name" value="<%= n%>" placeholder="Enter name" class="form-control">
+                        </div>
+                        <div class="mb-3">
+                                Email
+                            <input type="email" placeholder="Email" value="<%= e%>" name="email" class="form-control">
+                        </div>
+                        <div class="mb-3">
+                                Phone
+                            <input type="number" placeholder="phone no." name="phone" class="form-control">
+                        </div>
+                        <div class="mb-3">
+                            D.O.B.
+                            <input type="date" placeholder=" Enter D.O.B." name="dob" class="form-control">
+                        </div>
+                        <div class="mb-3">
+                                Address
+                                <textarea name="address"  placeholder="Enter address" class="form-control"></textarea>
+                        </div>
+                        <div class="mb-3">
+                                Gender <input type="radio" name="gender" class="mr-2" value="Male" readonly>Male <input type="radio" name="gender" value="Female" readonly>Female 
+                        </div>
+                        <div class="mb-5">
+                            Qualification
+                            <select name="qualification" readonly class="form-control">
+                                <option value="Qualification">Qualification</option>
+                                   <option value="10" >10th + Diploma</option>
+                                <option value="12" >12th in Mathematics</option>
+                            </select>
+                            </div>
+                        <div class="mb-5">
+                            Course
+                        <input type="text" value="btech" class="form-control" name="course" readonly>
+                    </div>
+                        <div class="mb-3">
+                            <button class="btn btn-info" type="submit">Sumbit</button>
+                        </div>
+                    </form>
+                </div><!--modal-body end-->
+            </div><!--modal content end-->
+        </div><!--modal-dialog end-->
+    </div><!--modal end-->
+    
+
+     <!-- BCA model -->
+     <div class="modal fade" id="bca">
+        <div class="modal-dialog"> <!--model xl,sm,lg-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-tittle"> Registration Form</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div><!--modal-header end-->
+                <div class="modal-body">
+                    <form action="/courseInsert" method="post" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            Name
+                            <input type="text" name="name" value="<%= n%>" placeholder="Enter name" class="form-control">
+                        </div>
+                        <div class="mb-3">
+                                Email
+                            <input type="email" placeholder="Email" value="<%= e%>" name="email" class="form-control">
+                        </div>
+                        <div class="mb-3">
+                                Phone
+                            <input type="number" placeholder="phone no." name="phone" class="form-control">
+                        </div>
+                        <div class="mb-3">
+                            D.O.B.
+                            <input type="date" placeholder=" Enter D.O.B." name="dob" class="form-control">
+                        </div>
+                        <div class="mb-3">
+                                Address
+                                <textarea name="address"  placeholder="Enter address" class="form-control"></textarea>
+                        </div>
+                        <div class="mb-3">
+                                Gender <input type="radio" name="gender" class="mr-2" value="Male" readonly>Male <input type="radio" name="gender" value="Female" readonly>Female 
+                        </div>
+                        <div class="mb-5">
+                            Qualification
+                            <select name="qualification" readonly class="form-control">
+                                <option value="Qualification">Qualification</option>
+                             <option value="10" >10th + Diploma</option>
+                                <option value="12" >12th in Mathematics</option>
+                            </select>
+                            </div>
+                        <div class="mb-5">
+                            Course
+                        <input type="text" value="bca" class="form-control" name="course" readonly>
+                    </div>
+                        <div class="mb-3">
+                            <button class="btn btn-info" type="submit">Sumbit</button>
+                        </div>
+                    </form>
+                </div><!--modal-body end-->
+            </div><!--modal content end-->
+        </div><!--modal-dialog end-->
+    </div><!--modal end-->
+   
+    <!-- mca modal -->
+     <div class="modal fade" id="mca">
+        <div class="modal-dialog"> <!--model xl,sm,lg-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-tittle"> Registration Form</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div><!--modal-header end-->
+                <div class="modal-body">
+                    <form action="/courseInsert" method="post" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            Name
+                            <input type="text" name="name" value="<%= n%>" placeholder="Enter name" class="form-control">
+                        </div>
+                        <div class="mb-3">
+                                Email
+                            <input type="email" placeholder="Email" value="<%= e%>" name="email" class="form-control">
+                        </div>
+                        <div class="mb-3">
+                                Phone
+                            <input type="number" placeholder="phone no." name="phone" class="form-control">
+                        </div>
+                        <div class="mb-3">
+                            D.O.B.
+                            <input type="date" placeholder=" Enter D.O.B." name="dob" class="form-control">
+                        </div>
+                        <div class="mb-3">
+                                Address
+                                <textarea name="address"  placeholder="Enter address" class="form-control"></textarea>
+                        </div>
+                        <div class="mb-3">
+                                Gender <input type="radio" name="gender" class="mr-2" value="Male" readonly>Male <input type="radio" name="gender" value="Female" readonly>Female 
+                        </div>
+                        <div class="mb-5">
+                            Qualification
+                            <select name="qualification" readonly class="form-control">
+                                <option value="Qualification">Qualification</option>
+                                 <option value="bechlor degree" >bechlor degree</option>
+                                  <option value="" >BCA</option>
+                            </select>
+                            </div>
+                        <div class="mb-5">
+                            Course
+                        <input type="text" value="mca" class="form-control" name="course" readonly>
+                    </div>
+                        <div class="mb-3">
+                            <button class="btn btn-info" type="submit">Sumbit</button>
+                        </div>
+                    </form>
+                </div><!--modal-body end-->
+            </div><!--modal content end-->
+        </div><!--modal-dialog end-->
+    </div><!--modal end-->
+    <!-- End Courses -->
+    <%-include('./layouts/footer.ejs')%>

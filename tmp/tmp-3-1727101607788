@@ -1,0 +1,11 @@
+1-Create folder
+2- create view, public,controller,modules, db folders and app.js
+3- install command
+  => npm init
+  => npm i express
+4- Create routes folder
+=> create web.js file
+5- web.js require in main file app.js
+6- install npm i ejs command and use require this app.set('view engine','ejs') in app.js main file 
+7-create a connect.js file in db folder and run npm i mongoose command 
+8- connect public folder to link image and css folder app.use(express.static('public'))

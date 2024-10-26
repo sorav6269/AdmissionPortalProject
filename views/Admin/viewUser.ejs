@@ -1,0 +1,77 @@
+<%-include('./header.ejs')%>
+<%-include('./sidebar.ejs')%>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper" style="background-color: rgb(243, 192, 25);">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0">ViewUser</h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Starter Page</li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <div class="content">
+      <div class="container-fluid">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">DataTable with default features</h3>
+          </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>id</th>
+                  <th>Name</th>
+                  <th>Email(s)</th>
+                  <th>Image</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                      <td><%= d._id %></td>
+                      <td><%= d.name %></td>
+                      <td><%= d.email %></td>
+                          <td>
+                        <img src="<%= d.image.url %>" width="50px" alt="">
+                      </td>       
+                    </tr>
+    
+
+                        <tfoot>
+                  <tr>
+                    <th>id</th>
+                    <th>Name</th>
+                    <th>Email(s)</th>
+                    <th>Image</th>
+                  </tr>
+                </tfoot>
+                
+              </table>
+                <button class="btn btn-info text-center"  style="margin-left: 50%;"  ><a href="/Admin/display" style="color: #fff;">Back</a></button>
+            
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+  <!-- /.modal -->
+
+<%-include('./footer.ejs')%>

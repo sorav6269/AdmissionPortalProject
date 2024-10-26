@@ -1,0 +1,81 @@
+<%-include('../layouts/header.ejs')%>
+<div class="content-wrapper" style="height: 300px; margin-top: 6%">
+  <!-- Content Header (Page header) -->
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0">View Student Data</h1>
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+  </div>
+  <!-- /.content-header -->
+
+  <!-- Main content -->
+  <div class="content mt-5">
+    <div class="container-fluid">
+      <div class="card">
+        <!-- /.card-header -->
+        <div class="card-body">
+          <table id="example1" class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>D.O.B.</th>
+                <th>Address</th>
+                <th>Gender</th>
+                <th>Qualification</th>
+                <th>Course</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><%= d._id %></td>
+                <td><%= d.name %></td>
+                <td><%= d.email %></td>
+                <td><%= d.phone %></td>
+                <td><%= d.dob %></td>
+                <td><%= d.address %></td>
+                <td><%= d.gender %></td>
+                <td><%= d.qualification%></td>
+                <td><%= d.course %></td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <thead>
+                <tr>
+                  <th>Id</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Phone</th>
+                  <th>D.O.B.</th>
+                  <th>Address</th>
+                  <th>Gender</th>
+                  <th>Qualification</th>
+                  <th>Course</th>
+                </tr>
+              </thead>
+            </tfoot>
+          </table>
+          <center>
+            <a href="/course/Display" class="btn btn-info">Back</a>
+          </center>
+        </div>
+        <!-- /.card-body -->
+      </div>
+      <!-- /.card -->
+    </div>
+    <!-- /.container-fluid -->
+  </div>
+  <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+
+<%-include('../layouts/footer.ejs')%>
