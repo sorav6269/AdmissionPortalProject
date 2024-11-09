@@ -3,6 +3,9 @@ const cloudinary = require("cloudinary");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const courseModel = require("../models/course");
+const randomstring = require('randomstring')
+const nodemailer = require('nodemailer')
+
 cloudinary.config({
   cloud_name: "dwovzxxol",
   api_key: "227631891845838",
@@ -12,10 +15,18 @@ class FrontController {
   static home = async (req, res) => {
     try {
       const { name, image, email, id, role } = req.userdata;
-      const btech = await courseModel.findOne({ user_id: id, course: "btech" })
+      const btech = await courseModel.findOne({ user_id: id, course: "btech" });
       const bca = await courseModel.findOne({ user_id: id, course: "bca" });
       const mca = await courseModel.findOne({ user_id: id, course: "mca" });
-      res.render("home", { n:name, i: image, e: email, btech:btech,bca:bca,mca:mca, r:role });
+      res.render("home", {
+        n: name,
+        i: image,
+        e: email,
+        btech: btech,
+        bca: bca,
+        mca: mca,
+        r: role,
+      });
     } catch (error) {
       console.log(error);
     }
@@ -191,6 +202,85 @@ class FrontController {
       console.log(errror);
     }
   };
+
+  static ForgetPasswordVerify = async (req, res) => {
+    try {
+      const { email } = req.body;
+      const userdata = await usermodel.findOne({ email: email });
+      // console.log(userdata)
+      if (userdata) {
+        const randomString = randomstring.generate();
+        await usermodel.updateOne(
+          { email: email },
+          { $set: { token: randomString } }
+        );
+        this.sendEmail(userdata.name, userdata.email, randomString);
+        req.flash("success", "Plz check mail to reset your password");
+        res.redirect("/");
+      } else {
+        req.flash("error", "you are not a registered Email");
+        req.redirect("/");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  static sendEmail = async (name, email, token) => {
+    // console.log(name,email,status,comment)
+    // connenct with the smtp server
+
+    let transporter = await nodemailer.createTransport({
+      host: "smtp.gmail.com",
+      port: 587,
+
+      auth: {
+        user: "soravrathor786@gmail.com",
+        pass: "ujxfdqoozbsjmlqr",
+      },
+    });
+    let info = await transporter.sendMail({
+      from: "test@gmail.com", // sender address
+      to: email, // list of receivers
+      subject: "Reset Password", // Subject line
+      text: "heelo", // plain text body
+      html:
+        "<p>Hii " +
+        name +
+        ',Please click here to <a href="http://localhost:3000/reset-password?token=' +
+        token +
+        '">Reset</a>Your Password.',
+    });
+  };
+
+  static reset_password = async (req, res) => {
+    try {
+      const token = req.query.token;
+      const tokenData = await usermodel.findOne({ token: token });
+      if (tokenData) {
+        res.render("reset-password", { user_id: tokenData._id });
+      } else {
+        res.render("404");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  static reset_password1 = async (req, res) => {
+    try {
+      const { password, user_id } = req.body
+      const newhashpassword = await bcrypt.hash(password, 10);
+      await usermodel.findByIdAndUpdate(user_id, {
+        password: newhashpassword,
+        token: "",
+      });
+      req.flash('success', "Reset Password Updated Successfully");
+      res.redirect("/")
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   static updateProfile = async (req, res) => {
     try {

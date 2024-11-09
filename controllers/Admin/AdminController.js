@@ -5,8 +5,10 @@ const nodemailer = require('nodemailer')
 class AdminController {
   static dashboard = async (req, res) => {
     try {
+       const stu = await usermodel.countDocuments({});
+       const course = await courseModel.countDocuments({});
       const { name, image } = req.userdata;
-      res.render("Admin/dashboard", { n: name, i: image });
+      res.render("Admin/dashboard", { n: name, i: image, s:stu, c:course });
     } catch (error) {
       console.log(error);
     }

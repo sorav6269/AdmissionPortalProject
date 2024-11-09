@@ -55,4 +55,9 @@ route.get("/Admin/course/delete/:id", checkauth, adminrole('admin'),AdminControl
 route.post("/Admin/statusUpdate/:id", checkauth, adminrole('admin'),AdminController.statusUpdate);
 
 
+// Forget Password
+route.post("/forget_Password", FrontController.ForgetPasswordVerify);
+route.get("/reset-password", FrontController.reset_password);
+route.post("/reset-password1", FrontController.reset_password1);
+
 module.exports = route
