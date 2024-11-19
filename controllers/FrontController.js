@@ -55,7 +55,11 @@ class FrontController {
   static Register = async (req, res) => {
     try {
       // res.render('Register')
-      res.render("Register", { message: req.flash("error") });
+      res.render("Register", {
+        message: req.flash("error"),
+
+        msg: req.flash("success"),
+      });
     } catch (error) {
       console.log(error);
     }
@@ -104,9 +108,26 @@ class FrontController {
 
             // To save data
 
-            await result.save();
-            req.flash("success", "Register Successfull ! Please Login");
-            res.redirect("/");
+            const userdata = await result.save();
+            // console.log(userdata)
+            if (userdata) {
+              const token = jwt.sign({ ID: userdata._id }, "xkdfjd4dkfgd");
+              // console.log(token)
+              res.cookie("token", token);
+              this.sendVerifymail(username, email, userdata._id);
+
+              // to redirect to login page
+              req.flash(
+                "success",
+                "Your Registration has been successfully. Please verify your Mail."
+              );
+              res.redirect("/Register");
+            } else {
+              req.flash("error", "Not Register.");
+              res.redirect("/Register");
+            }
+            // req.flash("success", "Register Successfull ! Please Login");
+            // res.redirect("/");
           } else {
             req.flash("error", "Password & Confirm Password must be same.");
             res.redirect("/Register");
@@ -120,6 +141,47 @@ class FrontController {
       console.log(error);
     }
   };
+
+  static sendVerifymail = async (username, email, userdata_id) => {
+    //console.log(name, email, user_id);
+    // connenct with the smtp server
+
+    let transporter = await nodemailer.createTransport({
+      host: "smtp.gmail.com",
+      port: 587,
+
+      auth: {
+        user: "soravrathor786@gmail.com",
+        pass: "ujxfdqoozbsjmlqr",
+      },
+    });
+    let info = await transporter.sendMail({
+      from: "test@gmail.com", // sender address
+      to: email, // list of receivers
+      subject: "For Verification mail", // Subject line
+      text: "heelo", // plain text body
+      html:
+        "<p>Hii " +
+        username +
+        ',Please click here to <a href="http://localhost:3000/verify?id=' +
+        userdata_id +
+        '">Verify</a>Your mail</p>.',
+    });
+    //console.log(info);
+  };
+
+  static verifyMail = async (req, res) => {
+    try {
+      const updateinfo = await usermodel.findByIdAndUpdate(req.query.id, {
+        is_verified: 1,
+      });
+      if (updateinfo) {
+        res.redirect('/home')
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   static verifyLogin = async (req, res) => {
     try {
@@ -269,18 +331,18 @@ class FrontController {
 
   static reset_password1 = async (req, res) => {
     try {
-      const { password, user_id } = req.body
+      const { password, user_id } = req.body;
       const newhashpassword = await bcrypt.hash(password, 10);
       await usermodel.findByIdAndUpdate(user_id, {
         password: newhashpassword,
         token: "",
       });
-      req.flash('success', "Reset Password Updated Successfully");
-      res.redirect("/")
+      req.flash("success", "Reset Password Updated Successfully");
+      res.redirect("/");
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
 
   static updateProfile = async (req, res) => {
     try {

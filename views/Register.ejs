@@ -45,7 +45,13 @@
                             <div class="alert alert-danger">
                                 <%= message%>
                             </div>
-                            <%}%>
+                            <% } %>
+
+                            <%if(msg.length>0){%>
+                                <div class="alert alert-success">
+                                    <%= msg%>
+                                </div>
+                        <%  }%>
                                 <!-- User Name -->
                                 <div class="row mb-4">
                                     <div

@@ -22,7 +22,9 @@ route.post('/verifyLogin', FrontController.verifyLogin)
 route.get("/profile", checkauth, FrontController.profile)
 route.post("/changePassword", checkauth, FrontController.changePassword)
 route.post("/updateProfile", checkauth, FrontController.updateProfile);
-route.get('/logout',FrontController.logout)
+route.get('/logout', FrontController.logout)
+
+route.get('/verify',FrontController.verifyMail)
 
 
 // course
