@@ -52,7 +52,7 @@ route.get("/Admin/Coursedisplay",checkauth,adminrole('admin'), AdminController.C
 route.get("/Admin/courseView/:id",checkauth,adminrole('admin'),AdminController.courseView);
 route.get("/Admin/courseEdit/:id",checkauth,adminrole('admin'),AdminController.courseEdit);
 route.post('/Admin/courseupdate/:id',checkauth,adminrole('admin'),AdminController.courseupdate)
-route.get("/Admin/course/delete/:id", checkauth, adminrole('admin'),AdminController.coursedelete);
+route.get("/Admin/coursedelete/:id", checkauth, adminrole('admin'),AdminController.coursedelete);
 // status update
 route.post("/Admin/statusUpdate/:id", checkauth, adminrole('admin'),AdminController.statusUpdate);
 
