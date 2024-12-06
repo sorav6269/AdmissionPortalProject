@@ -163,7 +163,7 @@ class FrontController {
       html:
         "<p>Hii " +
         username +
-        ',Please click here to <a href="http://localhost:3000/verify?id=' +
+        ',Please click here to <a href=""mongodb+srv://soravrathor:sorav12@cluster0.tkmjxwk.mongodb.net/ADMISSIONPORTALPROJECT?retryWrites=true&w=majority&appName=Cluster0"' +
         userdata_id +
         '">Verify</a>Your mail</p>.',
     });
