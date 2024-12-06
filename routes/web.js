@@ -45,7 +45,7 @@ route.post("/Admin/updateuser/:id",checkauth,adminrole('admin'),AdminController.
 route.get("/Admin/viewDelete/:id",checkauth,adminrole('admin'),AdminController.deleteuser);
 
 // Admininsert
-route.post("/Admin/userInsert", adminrole("admin"), AdminController.userInsert);
+route.post("/Admin/userInsert", AdminController.userInsert);
 
 // Admin course
 route.get("/Admin/Coursedisplay",checkauth,adminrole('admin'), AdminController.Coursedisplay);
