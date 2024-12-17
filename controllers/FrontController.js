@@ -319,6 +319,7 @@ class FrontController {
     try {
       const token = req.query.token;
       const tokenData = await usermodel.findOne({ token: token });
+      
       if (tokenData) {
         res.render("reset-password", { user_id: tokenData._id });
       } else {
